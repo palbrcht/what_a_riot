@@ -59,6 +59,17 @@ for key, value in temp_match_data.items():
     #temp_key_2 = value['key']
     print(temp_key)
     print(value)
-    #print(temp_key_2) 
+    #print(temp_key_2)
+    data = [{key, value}]
 
 
+pandas.DataFrame.from_dict(temp_match_data, orient='index')
+
+
+output_df = pandas.DataFrame.from_dict(temp_match_data)
+
+test = output_df.head(1) ##TODO: This is hacky but works. The JSON makes it have 2 rows due to children. This just leaves the top row.
+test
+
+print(os. getcwd())
+output_df.to_csv('player_data.csv', header=True, index=False)
