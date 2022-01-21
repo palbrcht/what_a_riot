@@ -63,7 +63,7 @@ def get_last_match(summoner_name):
             temp_deaths = json_data['info']['participants'][iteration]['deaths']
             temp_assists = json_data['info']['participants'][iteration]['assists']
             temp_champion = json_data['info']['participants'][iteration]['championName']
-            print(temp_summ + ":" + ' Kills: ' + str(temp_kills) + " Assists: " + str(temp_assists) +" Deaths: " + str(temp_deaths) + " Champion: " + temp_champion)
+            print(temp_summ + ":" + ' Kills: ' +" Deaths: " + str(temp_deaths) + str(temp_kills) + " Assists: " + str(temp_assists)  + " Champion: " + temp_champion)
             ###  Concatenating data into data frame.
             data = [{'summonerName': temp_summ, 'kills': temp_kills, 'assists': temp_assists, 'deaths': temp_deaths, 'championName': temp_champion, 'matchid': temp_match}]
             temp_df = pandas.DataFrame(data)
@@ -76,4 +76,4 @@ def get_last_match(summoner_name):
 
     print(match_data)
 
-get_last_match('INSERT_NAME_HERE')
+get_last_match('ADD_NAME_HERE')
