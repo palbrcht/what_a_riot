@@ -40,7 +40,6 @@ def get_match_data(matchid):
     print(placeholder_df)
 
 
-
 ##get_match_data('NA1_4182863077')
 
 
