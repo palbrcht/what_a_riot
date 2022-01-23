@@ -130,3 +130,6 @@ dmypy.json
 
 # Extra
 .csv
+what_a_riot.csv
+training_data.csv
+training_data_export_test.csv

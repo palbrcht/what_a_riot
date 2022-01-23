@@ -15,10 +15,10 @@ what_a_riot_import = pandas.read_csv(csv_source)
 
 def compile_match_data():
 
-    for temp_matchid in pandas.unique(what_a_riot_import['matchid']):
-        print(temp_matchid)
+    for temp_matchId in pandas.unique(what_a_riot_import['matchId']):
+        print(temp_matchId)
 
-        temp_match_data = get_match_data(temp_matchid)
+        temp_match_data = get_match_data(temp_matchId)
 
         try:
             compiled_match_data
@@ -36,11 +36,10 @@ def compile_match_data():
         print(compiled_match_data)
     
 
-    print('Query complete.')
+    print('Compilation complete.')
 
     return(compiled_match_data)
 
+compiled_data = compile_match_data()
 
-test_df = compile_match_data()
-
-print(test_df)
+merged_df = pandas.merge(compiled_data, what_a_riot_import, on=['matchId','summonerName'])

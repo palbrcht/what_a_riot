@@ -1,20 +1,21 @@
 import os
+from numpy import place
 import requests
 import pandas
 from dotenv import load_dotenv
 load_dotenv()
 
-def get_match_data(matchid):        
+def get_match_data(matchId):        
     ###  Import API key from environment file
     ENV_API_KEY = os.getenv('RIOT_API_KEY')
 
     ###  Construct API query
     url_domain = 'https://americas.api.riotgames.com/lol/match/v5/matches/'
-    url_match = matchid
+    url_match = matchId
     url_api_key = ENV_API_KEY
     
     ###  Query API for match data.
-    print('Getting data for match ' + matchid + '...')
+    print('Getting data for match ' + matchId + '...')
     query_string = (url_domain + url_match + '?api_key=' + url_api_key)
     api_request = requests.get(query_string)
     json_data = api_request.json()
@@ -37,8 +38,10 @@ def get_match_data(matchid):
         
         placeholder_df = pandas.concat([placeholder_df, temp_df], ignore_index=True)
 
+    placeholder_df['matchId'] = matchId
+
     return(placeholder_df)
 
 
 
-
+get_match_data('NA1_4180281134')
