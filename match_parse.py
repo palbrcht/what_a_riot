@@ -37,9 +37,8 @@ def get_match_data(matchid):
         
         placeholder_df = pandas.concat([placeholder_df, temp_df], ignore_index=True)
 
-    print(placeholder_df)
+    return(placeholder_df)
 
 
-##get_match_data('NA1_4182863077')
 
 
