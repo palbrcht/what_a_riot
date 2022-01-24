@@ -94,3 +94,22 @@
 
 # print(os. getcwd())
 # output_df.to_csv('player_data.csv', header=True, index=False)
+
+
+
+###
+### brought in from time_wasted
+###
+
+# from asyncio.windows_events import NULL
+# import os
+# import requests
+# import pandas
+# import time
+# from dotenv import load_dotenv
+# load_dotenv()
+
+# ENV_API_KEY = os.getenv('RIOT_API_KEY')
+# ENV_SUMMONER_NAME_LIST = os.getenv('SUMMONER_NAME_LIST')
+# summoner_name_list = ENV_SUMMONER_NAME_LIST.split(", ")
+
