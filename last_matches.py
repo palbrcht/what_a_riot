@@ -1,10 +1,6 @@
-import os
-import requests
-import pandas
-from dotenv import load_dotenv
-load_dotenv()
 
-def get_last_match(summoner_name):
+
+def get_last_match(summoner_name, number_matches):
     ####  Load required
     import os
     import requests
@@ -29,8 +25,8 @@ def get_last_match(summoner_name):
     ###  Get match history for specific player.
     url_domain = 'https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/'
     url_puuid = summoner_puuid
-    url_api_key = ENV_API_KEY
-    query_string = (url_domain + url_puuid + '/ids?count=5' + '&api_key=' + url_api_key)
+    url_number_matches = number_matches
+    query_string = (url_domain + url_puuid + '/ids?count=' + str(number_matches) + '&api_key=' + url_api_key)
     api_request = requests.get(query_string)
     json_data = api_request.json()
     temp_df = pandas.DataFrame(json_data, columns = ['matchid'])
@@ -41,16 +37,13 @@ def get_last_match(summoner_name):
 
     ###  Get match data for a specific match. Loop through all matches to get basic data for all participants.
     print('Pulling match data to verify values...')
-    match_data = pandas.DataFrame(columns=['summonerName', 'kills' , 'assists' , 'deaths' , 'championName' , 'matchid'])
+    match_data = pandas.DataFrame(columns=['summonerName', 'kills', 'deaths', 'assists', 'championName', 'matchid'])
 
     for temp_match in match_list['matchid']:
         url_domain = 'https://americas.api.riotgames.com/lol/match/v5/matches/'
         url_match = temp_match
-        url_api_key = ENV_API_KEY
 
         print('----------')
-        print('----------')
-        
         print('Getting data for match ' + temp_match + '...')
         query_string = (url_domain + url_match + '?api_key=' + url_api_key)
         api_request = requests.get(query_string)
@@ -63,17 +56,15 @@ def get_last_match(summoner_name):
             temp_deaths = json_data['info']['participants'][iteration]['deaths']
             temp_assists = json_data['info']['participants'][iteration]['assists']
             temp_champion = json_data['info']['participants'][iteration]['championName']
-            print(temp_summ + ":" + ' Kills: ' +" Deaths: " + str(temp_deaths) + str(temp_kills) + " Assists: " + str(temp_assists)  + " Champion: " + temp_champion)
+            print(temp_summ + ":" + ' Kills: ' + str(temp_kills) + " Deaths: " + str(temp_deaths) + " Assists: " + str(temp_assists)  + " Champion: " + temp_champion)
             ###  Concatenating data into data frame.
-            data = [{'summonerName': temp_summ, 'kills': temp_kills, 'assists': temp_assists, 'deaths': temp_deaths, 'championName': temp_champion, 'matchid': temp_match}]
+            data = [{'summonerName': temp_summ, 'kills': temp_kills, 'deaths': temp_deaths, 'assists': temp_assists, 'championName': temp_champion, 'matchid': temp_match}]
             temp_df = pandas.DataFrame(data)
             match_data = pandas.concat([match_data, temp_df], ignore_index=True)
     
+        
         print('----------')
-        print('----------')
-
     print('Match data compiled: ')
-
     print(match_data)
 
-get_last_match('ADD_NAME_HERE')
+get_last_match('INSERT_NAME_HERE', 5)
