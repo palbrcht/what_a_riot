@@ -69,8 +69,8 @@ def fetch_match_list(summoner_name, queue, match_count):
     if queue == 'flex':
       queue_value = 410
 
-    if queue == 'all':
-      queue_value = NULL
+    #if queue == 'all':
+    #  queue_value = NULL
 
     if queue == 'aram':
       queue_value = 450

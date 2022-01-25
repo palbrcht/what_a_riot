@@ -46,6 +46,6 @@ compiled_data = compile_match_data()
 ###     OR make the manual input the puuid, not summoner name.
 ###     We are losing information on 'Rando' inputted names that got S's. They are not matching.
 
-merged_df = pandas.merge(compiled_data, what_a_riot_import, how = 'left', on=['matchId','summonerName'])
+merged_df = pandas.merge(compiled_data, what_a_riot_import, how = 'left', on=['matchId','championName'])
 
 merged_df.to_csv('training_data_export.csv', header=True, index=False)
