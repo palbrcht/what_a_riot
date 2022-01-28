@@ -16,14 +16,14 @@ We used machine learning models to backwards engineer the match performance algo
 
 However, the actual letter grade (what we are trying to predict) is not available in the Riot Games API.  My assumption is that Riot does not include the actual game performance letter grade in the API because, ironically, they want to prevent players from doing exactly what we are doing. (Please read the Terms of Service section below to see why we think it's ok to do what we are doing and not agains the API TOS. Riot -- if you're reading this -- glad to explain!)  Using the Riot API we had the explanatory variables good to go (in-game performance data) but we did not have the outcome variable (letter grade).  
 
-Because Riot keeps letter grades data private, there is no way to acquire large data sets in a scalable way for post-game performance letter grades.  So, to acquire the outcome variable (the letter grade), we went old school, 'went out into the field' figuratively speaking, and collected the data ourselves from our own post-game scoreboard screens.  At the post-game screen after every League of Legends match, the general scoreboard and game performance is shown to each player.  We took screenshots of our letter grades and compiled the meta data (player names) for this match into a spreadsheet.  We then used the Riot API to find what match a screenshot belonged to, then used the Riot API to compile the in-game match data for that particular screenshot. This would yield a record to be fed into a training set for a machine learning model. Since this is a very manual process, I recruited friends to help share their screen shots after every game. This would help scale up and speed up the creation of a training data set.
+Because Riot keeps letter grades data private, there is no way to acquire large data sets in a scalable way for post-game performance letter grades.  So, to acquire the outcome variable (the letter grade), we went old school, 'went out into the field' figuratively speaking, and collected the data ourselves from our own post-game scoreboard screens.  At the post-game screen after every League of Legends match, the general scoreboard and game performance is shown to each player.  We took screenshots of our letter grades and compiled the meta data (player names) for this match into a spreadsheet.  
+
+We then used the Riot API to find what match a screenshot belonged to, then used the Riot API to compile the in-game match data for that particular screenshot. This would yield a record to be fed into a training set for a machine learning model. I say 'We' in this paragraph because I recruited friends to help share their screen shots after every game because since this is a very manual process. This helped scale up and speed up the creation of a training data set.
 
 
 ## What you'll need
 -  You'll need an API key from Riot Games. Find them here:  https://developer.riotgames.com/
--  A .env file that has a list of player names and your Riot API key.
-
-##  
+-  A .env file that has a list of player names and your Riot API key. 
 
 ##  Riot's API Terms of Service
 
