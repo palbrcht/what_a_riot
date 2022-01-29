@@ -20,6 +20,27 @@ Because Riot keeps letter grades data private, there is no way to acquire large 
 
 We then used the Riot API to find what match a screenshot belonged to, then used the Riot API to compile the in-game match data for that particular screenshot. This would yield a record to be fed into a training set for a machine learning model. I say 'We' in this paragraph because I recruited friends to help share their screen shots after every game because since this is a very manual process. This helped scale up and speed up the creation of a training data set.
 
+##  First Pass Model
+
+I wanted to make a very parsimonious and simple model just to see if we could find anything at a very basic level.  I wanted to predict the most using the fewest amount of variables. I prefer this kind of approach because they are the easiest to act on (it's easier disseminating results and getting buy-in from stakeholders when there are fewer things to explain).
+
+First, I had to subset the data to only include 1 character and 1 role. This is because each end of game letter grade is based upon percentile performance of a specific character playing a certain role.  (If you don't play the game, it basically just means there are different expectations of in-game performance depending on the character you use and the role you perform.)
+
+I have a friend who obsessively plays Pyke support. And since he reported a ton of his games, he helped create a 30 or so game dataset within a week.  So, as a first pass, I used that specific data subset as preliminary training data.
+
+Next, I had to pick the variables to include. I did not want to do an overkill ML model for this first pass -- just something simple to start with and see if conceptually we were on the right track.  I wanted to keep it simple and rudimentary. I also had a hunch that time was a major component since matches can last anywhere from 15 minutes to an hour.  So time definitely had to be one of the predictors, or at least controlled for and incorporated.  Next, I figured that I would just use earned gold in a match. The ideas is that every 'good' gameplay action in the game produces gold.  So, gold is a proxy variable for high performance.
+
+So, I just plotted gold earned over time stratified by two groups: one group comprising of matches where a S+, S, and S- were earned compared against a group where A's B's and C's were earned in matches.
+
+The plot below shows this and it clearly indicates that with gold alone we are onto something.  There's a decent bit to unpack in this plot but it's pretty simple and explains a lot:
+
+![](https://user-images.githubusercontent.com/7535790/151630391-f9188515-60ce-4209-b52e-6dce8d4528ed.png)
+
+I performed some standard logistic regressions and they confirmed the associations with gold, time, and game performance (didn't include that output).  The overall take-away here is that these simple tests gave us evidence that we could actually reverse engineer data.  Now it is time to move on to more complicated models and establish thresholds.
+
+##  First ML model
+
+Underway!
 
 ## What you'll need
 -  You'll need an API key from Riot Games. Find them here:  https://developer.riotgames.com/
