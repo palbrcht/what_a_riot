@@ -3,6 +3,7 @@ import requests
 import pandas
 from dotenv import load_dotenv
 load_dotenv()
+import time
 
 ### Custom functions
 from match_parse import get_match_data
@@ -15,6 +16,7 @@ what_a_riot_import = pandas.read_csv(csv_source)
 def compile_match_data():
 
     for temp_matchId in pandas.unique(what_a_riot_import['matchId']):
+        time.sleep(0.9)
         print(temp_matchId)
 
         temp_match_data = get_match_data(temp_matchId)

@@ -48,11 +48,11 @@ gg_pyke <- ggplot(only_pyke, aes(x=(timePlayed/60), y=goldEarned, color = grade_
   labs(title="Getting S with Pyke Support.. Oversimplified",
        x ="Game Minutes", 
        y = "Gold Earned" , 
-       subtitle= '1st pass; Jan 24 2022',
+       subtitle= '51 Obs; February 4, 2022',
        caption = 'Donate your screenshots today!') +
   #theme(legend.title=element_blank()) +
   #annotate("text", x = 25, y = 20000, label = "(Data point labels indicate deaths; deaths per minute.)") +
-  scale_x_continuous(limits=c(20, 40), breaks=seq(20,40,2)) +
+  scale_x_continuous(limits=c(20, 44), breaks=seq(20,44,2)) +
   scale_y_continuous(limits=c(5000, 23000), breaks=seq(5000,23000,1000), label = comma)
 
 gg_pyke 
