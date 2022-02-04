@@ -8,6 +8,7 @@ def find_match(summoner_name, req_kills, req_deaths, req_assists, req_champ):
     import requests
     import pandas
     from dotenv import load_dotenv
+    import time
     load_dotenv()
 
     ###  Import API key from environment file
@@ -40,6 +41,7 @@ def find_match(summoner_name, req_kills, req_deaths, req_assists, req_champ):
     
     print('Finding match...')
     for temp_match in match_list['matchid']:
+        #time.sleep(1)
         url_domain = 'https://americas.api.riotgames.com/lol/match/v5/matches/'
         url_match = temp_match
 
@@ -72,14 +74,4 @@ def find_match(summoner_name, req_kills, req_deaths, req_assists, req_champ):
     print(desired_match)
     print('Match found. Match ID: ' + desired_match_id)
 
-
-
-
-
-
-
-
-
-#def find_match(req_name, req_kills, req_deaths, req_assists, req_champ)
-
-find_match('INSERT_NAME_HERE', 12, 8, 28, 'Kled' )
+find_match('INSERT_NAME_HERE', 24, 12, 14, 'Pyke' )
