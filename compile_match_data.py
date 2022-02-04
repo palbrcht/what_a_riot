@@ -1,5 +1,4 @@
 import os
-from pickle import FALSE
 import requests
 import pandas
 from dotenv import load_dotenv
