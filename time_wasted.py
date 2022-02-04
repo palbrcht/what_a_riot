@@ -94,7 +94,6 @@ def fetch_match_list(summoner_name, queue, match_count):
     print(temp_df)
     return(temp_df)
 
-
 ###
 ###  Calculates time spent playing for a given queue.
 ###
@@ -127,7 +126,7 @@ def fetch_time_wasted(summoner_name, queue):
     print(summoner_name + ' has played ' + queue + ' games for: ')
     print(str(total_time) + ' seconds.')
     print(str((total_time/60)) + ' minutes.')
-    print(str((total_time/120))+ ' hours.')
+    print(str(((total_time/60)/60))+ ' hours.')
     return(total_time)
   
 
@@ -135,12 +134,8 @@ def fetch_time_wasted(summoner_name, queue):
 ###  Examples
 ###
 
-fetch_account_info('INSERT_NAME_HERE')
-
-fetch_puuid('INSERT_NAME_HERE')
-
-#queue type = 'norm', 'norms', 'solo', 'flex', aram
+#queue type = 'norm', 'norms', 'solo', 'flex', 'aram'
 #match count pick number between 0 and 100.
-fetch_match_list('INSERT_NAME_HERE', 'aram', 50)
+#fetch_match_list('INSERT_NAME_HERE', 'aram', 50)
 
-fetch_time_wasted('INSERT_NAME_HERE', 'solo')
+fetch_time_wasted('INSERT_NAME_HERE', 'norms')
