@@ -21,11 +21,26 @@ bot = commands.Bot(command_prefix='!')
 ###
 ###
 
+def fetch_puuid(summoner_name):
+    url_domain = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
+    url_api_key = ENV_API_KEY
+    query_string = (url_domain + summoner_name + '?api_key=' + url_api_key)
+    api_request = requests.get(query_string)
+    json_data = api_request.json()
+    print('PUUID retrieved for ' + summoner_name + '.')
+    account_puuid = json_data['puuid']
+    return(account_puuid)
+
+###
+###
+###
+
 @bot.command(name='last', help='Gets account info from a Summoner name.')
 async def last(ctx, summoner_name: str):
 
     await ctx.send('Fetching the last game for ' + summoner_name + ".... one moment....")
 
+    summoner_puuid = fetch_puuid(summoner_name)
     
     ### Get account ID's for specific player.
     print('Getting last matches for ' + summoner_name + '...')
@@ -131,7 +146,6 @@ async def find(ctx, summoner_name:str, req_kills:int, req_deaths:int, req_assist
         for iteration in range(0,10):
             ###   Compiling the data.
             temp_summ = json_data['info']['participants'][iteration]['summonerName']
-            temp_summ = temp_summ.lower()
             print(temp_summ)
             temp_kills = json_data['info']['participants'][iteration]['kills']
             temp_deaths = json_data['info']['participants'][iteration]['deaths']

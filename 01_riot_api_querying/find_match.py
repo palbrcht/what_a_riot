@@ -74,4 +74,4 @@ def find_match(summoner_name, req_kills, req_deaths, req_assists, req_champ):
     print(desired_match)
     print('Match found. Match ID: ' + desired_match_id)
 
-find_match('INSERT_NAME_HERE', 24, 12, 14, 'Pyke' )
+find_match('Adarooski', 15, 6, 12, 'Kaisa' )
