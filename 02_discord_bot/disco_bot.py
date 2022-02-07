@@ -42,21 +42,10 @@ async def last(ctx, summoner_name: str):
 
     summoner_puuid = fetch_puuid(summoner_name)
     
-    ### Get account ID's for specific player.
-    print('Getting last matches for ' + summoner_name + '...')
-    print('Retrieving account info...' + summoner_name + '...')
-    url_domain = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'
-    url_api_key = ENV_API_KEY
-    query_string = (url_domain + summoner_name + '?api_key=' + url_api_key)
-    api_request = requests.get(query_string)
-    json_data = api_request.json()
-    summoner_puuid = json_data['puuid']
-    print('Account info retrieved for ' + summoner_name + '....')
-
     ###  Get match history for specific player.
     url_domain = 'https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/'
     url_puuid = summoner_puuid
-    url_number_matches = 1
+    url_api_key = ENV_API_KEY
     query_string = (url_domain + url_puuid + '/ids?count=' + str(1) + '&api_key=' + url_api_key)
     api_request = requests.get(query_string)
     json_data = api_request.json()
