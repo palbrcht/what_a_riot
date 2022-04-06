@@ -1,5 +1,11 @@
 # what_a_riot
 
+##  Current Status
+
+We temporarily stopped work on this project to collect larger training data sets. (2/15/2022)
+
+We are in the process of making an easier system to contribute match information.
+
 ## Summary
 
 Riot Games is a gigantic US-based video game company that produces world-known games like League of Legends, Legends of Runeterra, Valorant, among others.  The League of Legends game is one of the most popular online game in the world and has been relevant for over 10 years.  In a game of League of Legends, 10 players play against each other on two teams of 5 players.  
