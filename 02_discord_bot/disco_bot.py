@@ -108,7 +108,7 @@ async def find(ctx, summoner_name:str, req_kills:int, req_deaths:int, req_assist
     ###  Get match history for specific player.
     url_domain = 'https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/'
     url_puuid = summoner_puuid
-    url_number_matches = 20
+    url_number_matches = 85
     query_string = (url_domain + url_puuid + '/ids?count=' + str(url_number_matches) + '&api_key=' + url_api_key)
     api_request = requests.get(query_string)
     json_data = api_request.json()
